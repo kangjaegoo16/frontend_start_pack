@@ -2,7 +2,8 @@ import '../css/login.css'
 import {useState} from "react";
 import login from "../api/loginApi"
 
-const Login = () => {
+const Login = ({history, location, match}) => {
+
 
     const [inputs, setInputs] = useState({
         username: '',
@@ -22,12 +23,14 @@ const Login = () => {
     const onClick = async () => {
         await login("/login",inputs).then((response) => {
            const {msg, data} =  response.data;
-           console.log(response.data);
            if (msg === 'success') {
                localStorage.setItem('X-AUTH-TOKEN', data);
+               history.push("/app/main");
            } else {
                alert("ERROR");
            }
+        }).catch((err) => {
+            alert("ERROR");
         });
     }
 

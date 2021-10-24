@@ -1,5 +1,3 @@
-
-
 const MainLayout = () => (
     <div>
         메인페이지

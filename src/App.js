@@ -8,14 +8,16 @@ import Error404 from "./error/404";
 function App() {
 
   return (
-      <Switch>
+      <>
           <Router>
-              <MainLayout />
-              <PrivateRoute exact path="/main" component={Main} />
-              <Route exact path="/login" component={Login} />
-              <PrivateRoute  component={Error404} />
+              <Switch>
+                  <Route exact path="/login" component={Login} />
+                  <PrivateRoute path="/app" component={MainLayout} />
+                  <Route  component={Error404} />
+              </Switch>
           </Router>
-      </Switch>
+      </>
+
   );
 }
 
